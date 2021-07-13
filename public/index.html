@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/validator/13.6.0/validator.min.js"></script>
+</head>
+
+<body>
+    <div class="w3-bar w3-black">
+        <a href="#" class="w3-bar-item w3-button"
+            onclick="showAcc();document.getElementById('acc').style.display='block'">Account</a>
+        <a href="#" class="w3-bar-item w3-button" onclick="logout()">Logout</a>
+        <a href="#" class="w3-bar-item w3-button"
+            onclick="document.getElementById('guild').style.display='block'">Create Guide</a>
+        <a href=" #" class="w3-bar-item w3-button"
+            onclick="document.getElementById('login').style.display='block'">Login</a>
+        <a href="#" class="w3-bar-item w3-button"
+            onclick="document.getElementById('sign').style.display='block'">Signup</a>
+        <a href="#" class="w3-bar-item w3-button w3-right" id="username"></a>
+    </div>
+    <div id="root" class="w3-panel"></div>
+    <!-- signup modal -->
+    <div id="sign" class="w3-modal">
+        <div class="w3-modal-content">
+            <div class="w3-container">
+                <span onclick="document.getElementById('sign').style.display='none'" id="close"
+                    class="w3-button w3-display-topright">&times;</span>
+                <form autocomplete="off" enctype="multipart/form-data">
+                    <div class="w3-row">
+                        <div class="w3-quarter w3-center">username:</div>
+                        <div class="w3-rest"><input type="text" name="user" class="w3-input"></div>
+                        <span id="user" class="w3-cursive w3-text-red w3-center"></span>
+                    </div>
+                    <div class="w3-row">
+                        <div class="w3-quarter w3-center">city:</div>
+                        <div class="w3-rest"><input type="text" name="city" class="w3-input"></div>
+                        <span id="city" class="w3-cursive w3-text-red w3-center"></span>
+                    </div>
+                    <div class="w3-row">
+                        <div class="w3-quarter w3-center">email:</div>
+                        <div class="w3-rest"><input type="text" name="email" class="w3-input"></div>
+                        <span id="email" class="w3-cursive w3-text-red w3-center"></span>
+                    </div>
+                    <div class="w3-row">
+                        <div class="w3-quarter w3-center">password:</div>
+                        <div class="w3-rest"><input type="password" name="pword" class="w3-input"></div>
+                        <span id="pword" class="w3-cursive w3-text-red w3-center"></span>
+                    </div>
+                    <div class="w3-row">
+                        <div class="w3-quarter w3-center">birthday:</div>
+                        <div class="w3-rest"><input type="date" name="birth" class="w3-input" required></div>
+                    </div>
+                    <div class="w3-row">
+                        <div class="w3-quarter w3-center">profile:</div>
+                        <div class="w3-rest"><input type="file" name="profile" class="w3-input" accept="image/*"
+                                required></div>
+                    </div>
+                    <div>
+                        <button class="w3-button w3-block" type="submit">submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- login form -->
+    <div id="login" class="w3-modal">
+        <div class="w3-modal-content">
+            <div class="w3-container">
+                <span onclick="document.getElementById('login').style.display='none'" id="close"
+                    class="w3-button w3-display-topright">&times;</span>
+                <form autocomplete="off">
+                    <div class="w3-row">
+                        <div class="w3-quarter w3-center">email:</div>
+                        <div class="w3-rest"><input type="text" name="email" class="w3-input"></div>
+                        <span id="Email" class="w3-cursive w3-text-red w3-center"></span>
+                    </div>
+                    <div class="w3-row">
+                        <div class="w3-quarter w3-center">password:</div>
+                        <div class="w3-rest"><input type="password" name="pword" class="w3-input"></div>
+                        <span id="Pword" class="w3-cursive w3-text-red w3-center"></span>
+                    </div>
+                    <div>
+                        <button class="w3-button w3-block" type="submit">submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- guild form -->
+    <div id="guild" class="w3-modal">
+        <div class="w3-modal-content">
+            <div class="w3-container">
+                <span onclick="document.getElementById('guild').style.display='none'" id="close"
+                    class="w3-button w3-display-topright">&times;</span>
+                <form autocomplete="off">
+                    <div class="w3-row">
+                        <div class="w3-quarter w3-center">title:</div>
+                        <div class="w3-rest"><input type="text" name="title" class="w3-input" required></div>
+                        <span id="title"></span>
+                    </div>
+                    <div class="w3-row">
+                        <div class="w3-quarter w3-center">content:</div>
+                        <div class="w3-rest"><textarea name="content" cols="100" rows="5" required></textarea></div>
+                        <span id="content"></span>
+                    </div>
+                    <div>
+                        <button class="w3-button w3-block" type="submit">submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Account Model -->
+    <div id="acc" class="w3-modal">
+        <div class="w3-modal-content">
+            <div class="w3-container">
+                <span onclick="document.getElementById('acc').style.display='none'" id="close"
+                    class="w3-button w3-display-topright">&times;</span>
+                <div id="root" class="w3-center w3-monospace w3-xlarge">
+                    <p id="user" title="name"></p>
+                    <img class="w3-circle">
+                    <p id="birth" title="birthday"></p>
+                    <p id="city" title="city"></p>
+                    <footer></footer>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-storage.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "API_KEY",
+            authDomain: "PROJECT_ID.firebaseapp.com",
+            databaseURL: "https://PROJECT_ID.firebaseio.com",
+            projectId: "PROJECT_ID",
+            storageBucket: "PROJECT_ID.appspot.com",
+            messagingSenderId: "SENDER_ID",
+            appId: "APP_ID",
+            measurementId: "G-MEASUREMENT_ID",
+
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        //references
+        const auth = firebase.auth()
+        const db = firebase.firestore()
+        const bucket = firebase.storage().ref()
+
+        // console.log({ auth, db, bucket });
+    </script>
+
+    <script src="./scripts/auth.js"></script>
+    <script src="./scripts/index.js"></script>
+</body>
+
+</html>
